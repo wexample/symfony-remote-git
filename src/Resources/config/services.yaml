@@ -1,0 +1,26 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+            $refreshHours: '%wexample_symfony_remote_git.refresh_hours%'
+            $autoRefresh: '%wexample_symfony_remote_git.auto_refresh%'
+            $refreshBatch: '%wexample_symfony_remote_git.refresh_batch%'
+
+    Wexample\SymfonyRemoteGit\:
+        resource: '../../{Command,EventSubscriber,Repository,Service}'
+
+    # The accounts' clients are set by the extension, by key.
+    Wexample\SymfonyRemoteGit\Service\RemoteGitRefreshService:
+        public: true
+        arguments:
+            $cache: '@cache.app'
+
+    Wexample\SymfonyRemoteGit\Service\RemoteGitActivityProvider:
+        arguments:
+            $accounts: '%wexample_symfony_remote_git.accounts%'
+
+    Wexample\SymfonyRemoteGit\EventSubscriber\RemoteGitRefreshSubscriber:
+        arguments:
+            $cache: '@cache.app'
