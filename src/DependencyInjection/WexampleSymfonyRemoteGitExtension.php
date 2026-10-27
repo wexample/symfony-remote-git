@@ -41,8 +41,9 @@ class WexampleSymfonyRemoteGitExtension extends AbstractWexampleSymfonyExtension
                 'class' => self::CLIENT_CLASSES[$account['host']],
                 'label' => self::LABELS[$account['host']].' ('.$key.')',
                 'base_url' => $account['base_url'] ?? Configuration::BASE_URLS[$account['host']],
-                // Declared only when given: a public account reads without one.
+                // Never required: a public account reads without one.
                 'api_key' => $account['token'],
+                'api_key_required' => false,
                 'headers' => Configuration::HOST_GITHUB === $account['host']
                     ? ['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28']
                     : null,
