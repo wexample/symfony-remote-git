@@ -1,7 +1,7 @@
 {
   "name": "wexample/symfony-remote-git",
   "description": "The repositories of GitHub and GitLab accounts and the commits of each day, kept up to date and summed up for symfony-git",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -14,7 +14,7 @@
     "php": ">=8.5",
     "symfony/console": "^7.4 || ^8.0",
     "wexample/php-remote-git": ">=1.0.0",
-    "wexample/symfony-git": ">=2.0.2",
+    "wexample/symfony-git": ">=4.0.0",
     "wexample/symfony-helpers": ">=18.0.2",
     "wexample/symfony-remote": ">=2.0.0"
   },
