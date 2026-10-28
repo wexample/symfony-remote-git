@@ -2,6 +2,7 @@ domain: symfony-remote-git.wex
 global:
   name: symfony-remote-git
   type: php-package
-  version: 2.0.1
+  version: 2.0.2
 wex:
-  version: 6.0.175
+  migration: 1
+  version: 6.0.179
