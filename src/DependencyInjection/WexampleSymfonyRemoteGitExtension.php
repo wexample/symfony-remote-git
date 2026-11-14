@@ -37,7 +37,7 @@ class WexampleSymfonyRemoteGitExtension extends AbstractWexampleSymfonyExtension
         $clients = [];
 
         foreach ($config['accounts'] as $key => $account) {
-            $clients[self::CLIENT_PREFIX.$key] = array_filter([
+            $clients[self::CLIENT_PREFIX.$key] = [
                 'class' => self::CLIENT_CLASSES[$account['host']],
                 'label' => self::LABELS[$account['host']].' ('.$key.')',
                 'base_url' => $account['base_url'] ?? Configuration::BASE_URLS[$account['host']],
@@ -47,12 +47,10 @@ class WexampleSymfonyRemoteGitExtension extends AbstractWexampleSymfonyExtension
                 'headers' => Configuration::HOST_GITHUB === $account['host']
                     ? ['Accept' => 'application/vnd.github+json', 'X-GitHub-Api-Version' => '2022-11-28']
                     : null,
-            ], static fn (mixed $value): bool => null !== $value);
+            ];
         }
 
-        if ([] !== $clients) {
-            $container->prependExtensionConfig('wexample_symfony_remote', ['clients' => $clients]);
-        }
+        WexampleSymfonyRemoteExtension::prependClients($container, $clients);
     }
 
     public function load(
