@@ -1,6 +1,6 @@
 # symfony-remote-git
 
-Version: 3.0.2
+Version: 3.0.3
 
 The repositories of GitHub and GitLab accounts and the commits of each day, kept up to date and summed up for symfony-git
 
